@@ -19,11 +19,5 @@
       "src": "/(.*)",
       "dest": "public/$1"
     }
-  ],
-  "cron": [
-    {
-      "path": "/api/process-queue",
-      "schedule": "* * * * *"
-    }
-  ]
+  ],  
 }
