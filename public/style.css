@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+header {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+header h1 {
+    font-weight: 600;
+}
+header .subtitle {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #adb5bd;
+    margin-top: 0.25rem;
+}
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+.step-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.step-card h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #007bff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.form-group input[type="file"],
+.form-group input[type="number"],
+.form-group input[type="color"],
+.form-group input[type="text"],
+.form-group textarea {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+.form-group textarea {
+    resize: vertical;
+}
+.form-group small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #555;
+}
+.form-control-select {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 1rem;
+}
+.btn-primary, .btn-secondary, .btn-google {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+.btn-primary:disabled {
+    background-color: #c0c0c0;
+    cursor: not-allowed;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+.btn-secondary:disabled {
+    background-color: #c0c0c0;
+    cursor: not-allowed;
+}
+.btn-google {
+    background-color: #ffffff;
+    color: #444;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-google img {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+.btn-google:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+#editor-area {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 1rem auto;
+    border: 2px dashed #ccc;
+    background-color: #fafafa;
+    min-height: 400px;
+    overflow: hidden;
+}
+#template-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.draggable {
+    position: absolute;
+    cursor: move;
+    border: 1px dashed #007bff;
+    padding: 5px;
+    white-space: nowrap;
+}
+.signature-image {
+    position: absolute;
+    cursor: move;
+    border: 1px dashed #555;
+    max-height: 120px;
+    width: auto;
+    outline: none; 
+}
+.signature-image:focus {
+    border: 1px dashed #ff0000;
+}
+.status-message {
+    font-style: italic;
+    color: #555;
+    margin-top: 1rem;
+}
+.status-success {
+    font-weight: 600;
+    color: #28a745;
+    margin-bottom: 1rem;
+}

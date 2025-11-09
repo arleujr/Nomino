@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Certificados</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Gerador de Certificados</h1>
+        <p class="subtitle">Developed by Arleu Júnior</p>
+    </header>
+
+    <main class="container">
+        
+        <section id="step-1-editor" class="step-card active-step">
+            <h2>Upload e Configuração</h2>
+            
+            <div class="upload-section">
+                <div class="form-group">
+                    <label for="template-upload">1. Upload do Template (PNG/JPG)</label>
+                    <input type="file" id="template-upload" accept="image/png, image/jpeg">
+                </div>
+                <div class="form-group">
+                    <label for="csv-upload">2. Upload da Lista (CSV)</label>
+                    <input type="file" id="csv-upload" accept=".csv">
+                    <small>CSV deve conter as colunas 'nome' e 'email'.</small>
+                </div>
+                <div class="form-group">
+                    <label for="signature-upload">3. Upload de Assinaturas (Opcional)</label>
+                    <input type="file" id="signature-upload" accept="image/png" multiple>
+                </div>
+            </div>
+
+            <hr>
+
+            <h3>Editor Visual</h3>
+            <div id="editor-area">
+                <img id="template-image" src="" alt="Template do Certificado" style="display: none;">
+                
+            </div>
+
+            <div id="controls-section" style="display: none;">
+                <h4>Controles do Nome</h4>
+                <div class="form-group">
+                    <label for="font-size">Tamanho (px):</label>
+                    <input type="number" id="font-size" value="30">
+                </div>
+                <div class="form-group">
+                    <label for="font-color">Cor:</label>
+                    <input type="color" id="font-color" value="#000000">
+                </div>
+                <div class="form-group">
+                    <label for="font-family">Fonte:</label>
+                    <select id="font-family" class="form-control-select">
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="Times New Roman, serif">Times New Roman</option>
+                        <option value="Verdana, sans-serif">Verdana</option>
+                        <option value="Georgia, serif">Georgia</option>
+                        <option value="Cursive, sans-serif">Cursive (Script)</option>
+                        <option value="Impact, sans-serif">Impact</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="btn-generate-zip" class="btn-secondary" disabled>Gerar ZIP de Verificação</button>
+            <button id="btn-goto-email" class="btn-primary" disabled>Configurar Envio</button>
+        
+        </section>
+
+        <section id="step-2-email" class="step-card" style="display: none;">
+            <h2>Configurar Envio de E-mail</h2>
+
+            <div id="auth-section">
+                <p>Para enviar os e-mails, você precisa autenticar com o Google:</p>
+                <button id="btn-login-google" class="btn-google">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" /> Conectar com Google
+                </button>
+                <p id="auth-status" class="status-message" style="display: none;">Verificando status...</p>
+            </div>
+
+            <div id="email-section" style="display: none;">
+                <p class="status-success">✓ Conectado ao Google com sucesso!</p>
+                <hr>
+                
+                <div class="form-group">
+                    <label for="email-subject">Assunto do E-mail</label>
+                    <input type="text" id="email-subject" placeholder="Ex: Seu Certificado do Simpósio">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email-body">Corpo do E-mail</label>
+                    <textarea id="email-body" rows="6" placeholder="Escreva seu e-mail aqui. Use {{NOME}} para inserir o nome do participante."></textarea>
+                    <small>Exemplo: Olá {{NOME}}, obrigado por participar!</small>
+                </div>
+
+                <button id="btn-send-queue" class="btn-primary">Agendar Envios</button>
+            </div>
+        </section>
+
+        <section id="step-3-send" class="step-card" style="display: none;">
+            <h2>Passo 3: Acompanhar Fila</h2>
+            <p>Seus e-mails foram agendados. O robô está trabalhando...</p>
+        </section>
+
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
