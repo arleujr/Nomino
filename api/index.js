@@ -191,14 +191,17 @@ async function generateSinglePdf(
     const scaledX = nameSettings.x * scale;
     const scaledYTop = nameSettings.y * scale;
     
-    // --- LÓGICA DE CENTRALIZAÇÃO DO NOME ---
-    const nameWidth = font.widthOfTextAtSize(name, nameSettings.fontSize * scale);
+    // --- LÓGICA DE CENTRALIZAÇÃO FINAL (CORRIGIDA) ---
+    const scaledFontSize = nameSettings.fontSize * scale;
+    const nameWidth = font.widthOfTextAtSize(name, scaledFontSize);
+    
+    // Calcula o ponto de início (LEFT) baseado no centro desejado (scaledX)
+    // O ponto que o usuário arrastou (scaledX + cssOffset) é o nosso CENTRO.
     const finalXCenterPoint = scaledX + cssOffset;
     const finalX = finalXCenterPoint - (nameWidth / 2);
     // --- FIM DA LÓGICA DE CENTRALIZAÇÃO ---
     
     const scaledYTopText = scaledYTop + cssOffset;
-    const scaledFontSize = nameSettings.fontSize * scale;
     const finalYTopPdf = originalHeight - scaledYTopText;
     const visualCompensation = 0.85;
     const finalY = finalYTopPdf - (scaledFontSize * visualCompensation);
