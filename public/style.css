@@ -156,10 +156,6 @@ header .subtitle {
     border: 1px dashed #007bff;
     padding: 5px;
     white-space: nowrap;
-    text-align: center; /* <<< A CORREÇÃO VISUAL PARA O NOME */
-}
-#preview-name {
-    min-width: 250px; /* Garante que a área clicável é razoável */
 }
 .signature-image {
     position: absolute;
