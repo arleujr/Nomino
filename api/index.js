@@ -190,7 +190,13 @@ async function generateSinglePdf(
     const cssOffset = 6 * scale;
     const scaledX = nameSettings.x * scale;
     const scaledYTop = nameSettings.y * scale;
-    const finalX = scaledX + cssOffset;
+    
+    // --- LÓGICA DE CENTRALIZAÇÃO DO NOME ---
+    const nameWidth = font.widthOfTextAtSize(name, nameSettings.fontSize * scale);
+    const finalXCenterPoint = scaledX + cssOffset;
+    const finalX = finalXCenterPoint - (nameWidth / 2);
+    // --- FIM DA LÓGICA DE CENTRALIZAÇÃO ---
+    
     const scaledYTopText = scaledYTop + cssOffset;
     const scaledFontSize = nameSettings.fontSize * scale;
     const finalYTopPdf = originalHeight - scaledYTopText;
