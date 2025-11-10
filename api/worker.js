@@ -44,17 +44,9 @@ async function generatePdfFromJob(jobData) {
     const cssOffset = 6 * scale;
     const scaledX = nameSettings.x * scale;
     const scaledYTop = nameSettings.y * scale;
-
-    // --- LÓGICA DE CENTRALIZAÇÃO FINAL (CORRIGIDA) ---
-    const scaledFontSize = nameSettings.fontSize * scale;
-    const nameWidth = font.widthOfTextAtSize(participant.nome, scaledFontSize);
-    
-    // O ponto que o usuário arrastou (scaledX + cssOffset) é o nosso CENTRO.
-    const finalXCenterPoint = scaledX + cssOffset;
-    const finalX = finalXCenterPoint - (nameWidth / 2);
-    // --- FIM DA LÓGICA DE CENTRALIZAÇÃO ---
-    
+    const finalX = scaledX + cssOffset;
     const scaledYTopText = scaledYTop + cssOffset;
+    const scaledFontSize = nameSettings.fontSize * scale;
     const finalYTopPdf = originalHeight - scaledYTopText;
     const visualCompensation = 0.85;
     const finalY = finalYTopPdf - (scaledFontSize * visualCompensation);
@@ -87,7 +79,7 @@ async function generatePdfFromJob(jobData) {
         const verticalCompensation = sigHeight * 0.08;
         const finalSigY = originalHeight - scaledSigYTopImg - sigHeight + verticalCompensation;
         page.drawImage(sigImg, {
-            x: finalSigX, y: finalY,
+            x: finalSigX, y: finalSigY,
             width: sigWidth, height: sigHeight,
         });
     }
